@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://afumadcd.github.io/appm-leyu-com-cn/sitemap.xml
