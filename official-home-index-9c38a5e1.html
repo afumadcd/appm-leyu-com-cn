@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信息索引 · 爱游戏资料整理</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f5f7;
+      color: #2c3e50;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* hero 段落 — 开场短句 */
+    .hero-tone {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2.5rem 2.2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.02);
+      border: 1px solid #e9eaed;
+    }
+
+    .hero-tone h1 {
+      font-size: 2rem;
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      color: #1f2937;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-tone p.lead {
+      font-size: 1.1rem;
+      color: #4b5563;
+      max-width: 90%;
+    }
+
+    /* 卡片通用 */
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.03);
+      border: 1px solid #e4e7ec;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 24px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 480;
+      color: #111827;
+      border-left: 4px solid #9aa6b5;
+      padding-left: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 460;
+      color: #1e293b;
+      margin-top: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p, .card li {
+      color: #374151;
+    }
+
+    .card ul, .card ol {
+      padding-left: 1.6rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* 特点列表 —— 使用细边框+柔和阴影的组合 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+      margin-top: 0.8rem;
+    }
+
+    .feature-item {
+      flex: 1 1 200px;
+      background: #fafbfc;
+      border-radius: 18px;
+      padding: 1.2rem 1.2rem 1.4rem;
+      border: 1px solid #e1e4e9;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+    }
+
+    .feature-item strong {
+      display: block;
+      font-weight: 540;
+      color: #1e293b;
+      margin-bottom: 0.4rem;
+      font-size: 1rem;
+    }
+
+    .feature-item span {
+      font-size: 0.95rem;
+      color: #4b5563;
+    }
+
+    /* 场景中的引用样式 */
+    .insight-box {
+      background: #f8f9fc;
+      border-radius: 20px;
+      padding: 1.3rem 1.8rem;
+      margin: 1.2rem 0 0.6rem;
+      border: 1px solid #e2e6ed;
+      font-style: normal;
+    }
+
+    .insight-box p {
+      margin-bottom: 0.3rem;
+    }
+
+    .insight-box .source {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-top: 0.3rem;
+    }
+
+    /* 温和结尾 */
+    .gentle-footer {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.8rem 2.2rem;
+      text-align: center;
+      border: 1px solid #e4e7ec;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      margin-top: 2.2rem;
+    }
+
+    .gentle-footer p {
+      color: #4b5563;
+      font-size: 0.98rem;
+      max-width: 560px;
+      margin: 0 auto 0.4rem auto;
+    }
+
+    .gentle-footer .sig {
+      color: #6b7280;
+      font-size: 0.9rem;
+      margin-top: 0.8rem;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    a:hover {
+      border-bottom-color: #2563eb;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e2e5ea;
+      margin: 1.8rem 0 0.8rem 0;
+      opacity: 0.5;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body { padding: 1.2rem 0.8rem; }
+      .hero-tone { padding: 1.6rem 1.2rem; }
+      .hero-tone h1 { font-size: 1.6rem; }
+      .card { padding: 1.4rem 1.2rem; }
+      .feature-item { flex: 1 1 100%; }
+      .gentle-footer { padding: 1.4rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 开场短句 -->
+  <div class="hero-tone">
+    <h1>整理，是为了更清晰地索引</h1>
+    <p class="lead">在信息碎片不断增生的网络环境中，把分散的资料归拢、标记、对照，本身就是一种理解方式。以下内容围绕 <a href="https://official-home-aiyouxisports.com">爱游戏</a> 这一关键词，从分类、结构、常见问点三个角度做一次温和的梳理。</p>
+  </div>
+
+  <!-- 承接段落 + 资料整理角度 -->
+  <div class="card">
+    <h2>从索引到理解 · 一次信息组织实验</h2>
+    <p>许多时候我们面对的不是信息太少，而是信息缺少骨架。在整理与 <a href="https://official-home-aiyouxisports.com">爱游戏</a> 相关的资料过程中，发现其内容分布呈现出三个明显的层次：基础概念、场景化用法、以及用户常提及的细节疑问。与其逐条罗列，不如按照“主题-子项-备注”的结构重新编排。</p>
+    <p>下文卡片中的内容均来自公开可查的信息源，仅做归纳与转述，不添加主观评价。每一类都附有简短的使用场景说明，方便对照查阅。</p>
+    <div class="insight-box">
+      <p>💡 资料整理原则：优先采用一级来源，对二手信息做交叉比对；表述尽量保留原意，不压缩重要限定词。</p>
+      <p class="source">—— 整理笔记，2025</p>
+    </div>
+  </div>
+
+  <!-- 特点列表：用卡片内的网格呈现 -->
+  <div class="card">
+    <h2>信息结构中的几个关键特征</h2>
+    <p>以下特征基于对相关公开内容的归纳，每一条都对应一个常见的检索或对比场景。</p>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <strong>· 分类粒度</strong>
+        <span>内容通常按功能/主题分为三级目录，有时会包含交叉引用标签，便于横向跳转。</span>
+      </div>
+      <div class="feature-item">
+        <strong>· 版本备注</strong>
+        <span>部分页面会明确标注更新日期或版本号，这是判断信息时效性的直接线索。</span>
+      </div>
+      <div class="feature-item">
+        <strong>· 关联索引</strong>
+        <span>在段落末尾或侧边栏会列出“参见”“对比”等链接，形成网状而非线性的阅读路径。</span>
+      </div>
+      <div class="feature-item">
+        <strong>· 常见疑问前置</strong>
+        <span>许多资料页会把最高频的 3–5 个问题放在靠前位置，节省反复查找的时间。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 场景 + 提示 (以FAQ摘要形式展开) -->
+  <div class="card">
+    <h2>两个典型场景 & 一个提醒</h2>
+    <h3>场景一 · 对某个功能做横向对比</h3>
+    <p>当你需要比较不同模块的异同时，建议先提取各自的核心参数（或逻辑描述），制成简易表格。在 <a href="https://official-home-aiyouxisports.com">爱游戏</a> 的资料中，这种对比往往隐藏在分段叙述里，可以用“关键词定位法”快速提取。</p>
+
+    <h3>场景二 · 验证某条信息的准确性</h3>
+    <p>遇到一段没有出处或仅有模糊表述的文字，可尝试用其中的专有名词 + 年份进行组合搜索。很多资料整理者会在脚注或“参考来源”部分留下追踪线索，值得养成查看的习惯。</p>
+
+    <hr>
+    <p style="font-size: 0.95rem;"><strong>提示：</strong> 信息整理难免有时效性问题，若发现关键点与当前页面不同，可以标注“待核实”并注明日期，这是对自身记录习惯的负责。</p>
+  </div>
+
+  <!-- 温和结尾 -->
+  <div class="gentle-footer">
+    <p>整理不是终点，而是下一次检索的起点。希望这份围绕爱游戏的资料索引能为你节省一点时间，也保留一点好奇心。</p>
+    <p>— 用结构代替堆砌，用索引代替重复 —</p>
+    <div class="sig">最后整理日期 · 2025.04  /  基于公开信息归纳</div>
+  </div>
+
+  <!-- 脚注/微小归属（不显眼但合规） -->
+  <div style="margin-top: 2rem; text-align: center; font-size: 0.8rem; color: #9ca3af; border-top: 1px solid #e4e7ec; padding-top: 1.2rem;">
+    本页为资料索引展示，内容仅供参考。主站：<a href="https://official-home-aiyouxisports.com" style="color:#9ca3af; border-bottom: 1px solid #d1d5db;">爱游戏</a>
+  </div>
+</div>
+</body>
+</html>
