@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5e对战平台 · 信息索引站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f9fb;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+            color: #1e2a35;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* hero */
+        .hero {
+            margin-bottom: 3rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #e6eaef;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #14212b;
+            margin-bottom: 0.4rem;
+            line-height: 1.2;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #5f6c7a;
+            margin-top: 0.2rem;
+            font-weight: 350;
+            letter-spacing: 0.02em;
+        }
+
+        /* 引语段落 */
+        .intro-text {
+            font-size: 1rem;
+            margin-bottom: 2.2rem;
+            color: #2a3a48;
+        }
+
+        .intro-text a {
+            color: #1a5c8a;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s ease;
+        }
+
+        .intro-text a:hover {
+            border-bottom-color: #1a5c8a;
+        }
+
+        /* 卡片区域 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin: 2.5rem 0 2.8rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 1.8rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 6px 18px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 20px rgba(0, 20, 40, 0.06);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 550;
+            color: #1b2b39;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.01em;
+        }
+
+        .card h2::before {
+            content: "▍";
+            color: #2f7aa8;
+            margin-right: 0.25rem;
+            font-weight: 400;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2f4050;
+            margin-bottom: 0.4rem;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card .meta-tag {
+            display: inline-block;
+            background: #eef3f8;
+            border-radius: 40px;
+            padding: 0.2rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #1f4b6a;
+            margin-right: 0.4rem;
+            margin-top: 0.3rem;
+        }
+
+        /* 人群列表/场景 */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 0.5rem;
+            margin: 0.8rem 0 0.2rem;
+        }
+
+        .tag-item {
+            background: #eef3f8;
+            border-radius: 40px;
+            padding: 0.15rem 1rem;
+            font-size: 0.78rem;
+            color: #1f4b6a;
+            font-weight: 450;
+        }
+
+        /* 自然链接段落（单独） */
+        .link-note {
+            background: #f2f6fa;
+            border-radius: 20px;
+            padding: 1.4rem 1.8rem;
+            margin: 1.8rem 0 2.2rem;
+            border-left: 4px solid #2f7aa8;
+        }
+
+        .link-note p {
+            font-size: 0.98rem;
+            color: #1e303e;
+        }
+
+        .link-note a {
+            color: #1a5c8a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #b7cbd9;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .link-note a:hover {
+            border-bottom-color: #1a5c8a;
+            color: #0b3f61;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            margin: 2rem 0 1rem;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1b2b39;
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e2e8ef;
+            padding: 0.6rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            font-size: 0.93rem;
+            color: #1e2f3d;
+        }
+
+        .faq-a {
+            font-size: 0.88rem;
+            color: #4d5f6e;
+            margin-top: 0.15rem;
+        }
+
+        /* 页脚 */
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e6ed;
+            font-size: 0.8rem;
+            color: #667884;
+            text-align: left;
+        }
+
+        .footer-note span {
+            opacity: 0.7;
+        }
+
+        /* 响应式 */
+        @media (max-width: 520px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            .card {
+                padding: 1.2rem 1.2rem;
+            }
+
+            .link-note {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>5e对战平台 · 资料整理</h1>
+        <div class="sub">围绕信息索引与场景梳理 · 轻量卡片</div>
+    </div>
+
+    <!-- 引语 -->
+    <div class="intro-text">
+        <p>如果你平时需要整理对战数据、了解不同模式下的玩家习惯，或者只是想找一个可以随时组队、记录表现的平台，<a href="https://site-5e.com">5e对战平台</a>算是一个经常被提起的名字。这个页面从资料整理的角度，把它的主要用途、适合人群以及一些常见疑问摘要放在一起，方便你快速判断。</p>
+    </div>
+
+    <!-- 卡片网格 -->
+    <div class="card-grid">
+
+        <div class="card">
+            <h2>用途卡片</h2>
+            <p><strong>排位 / 匹配 / 训练</strong> — 平台提供了几种不同的对战模式，你可以根据自己当天的状态和目的来选择。从日常匹配到赛季排位，都有一套分层机制。</p>
+            <p><span class="meta-tag">数据统计</span><span class="meta-tag">对局回放</span><span class="meta-tag">战力分析</span></p>
+            <p style="margin-top: 0.6rem;">对于想记录自己成长轨迹的玩家，每局后的数据摘要和个人面板可以当作一个简易的“资料库”来用，方便复盘与调整。</p>
+        </div>
+
+        <div class="card">
+            <h2>适合人群</h2>
+            <p>以下几类使用者可能会在平台上找到自己需要的部分：</p>
+            <div class="tag-list">
+                <span class="tag-item">注重对局数据的玩家</span>
+                <span class="tag-item">喜欢固定车队沟通</span>
+                <span class="tag-item">希望查阅赛季记录</span>
+                <span class="tag-item">从休闲转向半竞技</span>
+                <span class="tag-item">内容创作者收集素材</span>
+            </div>
+            <p style="margin-top: 0.8rem;">没有哪一种人群是“唯一”的，更多是看你的习惯和需求是否和平台提供的工具合拍。</p>
+        </div>
+
+        <div class="card">
+            <h2>场景举例</h2>
+            <p><strong>○ 日常组队</strong> — 约上两三个熟人打几局，同时能看到每个人的表现波动。<br>
+            <strong>○ 赛季末冲刺</strong> — 查看最近对局胜率、常用角色或地图，做最后调整。<br>
+            <strong>○ 信息整理</strong> — 把平台的对局记录导出或截图，配合自己的笔记，形成个人档案。</p>
+        </div>
+
+    </div>
+
+    <!-- 自然链接段落 -->
+    <div class="link-note">
+        <p>假如你想进一步了解具体的匹配机制、道具系统或者历史赛季的变化，可以直接去翻翻<a href="https://site-5e.com">5e对战平台</a>上的帮助页面和公告区。很多细节在玩家社区里也有讨论，可以和平台官方信息对照着看。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h3>几个常见疑问 · 摘要</h3>
+        <div class="faq-item">
+            <div class="faq-q">Q：平台上的数据记录会保留多久？</div>
+            <div class="faq-a">目前常规对局记录和赛季数据会持续保留，具体清理规则可以参考平台内的数据说明。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q：可以只用来查看他人的对战信息吗？</div>
+            <div class="faq-a">部分公开资料可浏览，但详细的个人面板需要登录后按权限展示。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q：资料整理角度建议从哪里开始？</div>
+            <div class="faq-a">可以先用“个人战绩”页面导出几局数据作为样本，再慢慢建立自己的标签和备注系统。</div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        <span>信息索引 · 非官方说明页面 · 更新于2025</span>
+    </div>
+
+</div>
+</body>
+</html>
