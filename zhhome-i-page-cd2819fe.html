@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 游戏文化专题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Noto Serif SC', 'Times New Roman', serif;
+            background: #f0f1f3;
+            color: #2d2d2d;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* 首页横幅 — 杂志封面式 */
+        .hero {
+            position: relative;
+            margin-bottom: 2.8rem;
+            padding: 3.5rem 2rem 2.5rem;
+            background: linear-gradient(145deg, #e9eef2 0%, #d9dfe5 100%);
+            border: 1px solid #c9ced4;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .hero::after {
+            content: '◆ 游戏即叙事 ◆';
+            position: absolute;
+            bottom: 1rem;
+            right: 2rem;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: #5e6b7a;
+            opacity: 0.5;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 400;
+            letter-spacing: 6px;
+            color: #1e2a36;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #3f4c5a;
+            max-width: 600px;
+            margin: 0 auto;
+            border-top: 1px solid #bcc3cb;
+            padding-top: 1rem;
+        }
+
+        /* 背景说明 — 单行杂志引言 */
+        .context-note {
+            background: #ffffffdd;
+            backdrop-filter: blur(1px);
+            padding: 1.4rem 2rem;
+            margin-bottom: 2.5rem;
+            border-left: 4px solid #6f7e8f;
+            border-radius: 0 2px 2px 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            font-size: 0.95rem;
+            color: #304050;
+        }
+
+        .context-note span {
+            display: inline-block;
+            background: #dde3ea;
+            padding: 0.1rem 0.7rem;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            margin-right: 0.6rem;
+            color: #2d3a48;
+        }
+
+        /* 三段式卡片区 */
+        .feature-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: #fafbfc;
+            padding: 1.8rem 2rem 1.8rem 2.2rem;
+            border: 1px solid #d7dce1;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02), 0 0 0 1px #edf0f3 inset;
+            border-radius: 1px;
+            transition: box-shadow 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05), 0 0 0 1px #cdd4db inset;
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 450;
+            letter-spacing: 1px;
+            color: #1f2c39;
+            border-bottom: 1px solid #cdd3da;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .card h2::before {
+            content: '▸';
+            margin-right: 0.6rem;
+            color: #5c6c7e;
+            font-size: 1rem;
+        }
+
+        .card p {
+            margin-bottom: 0.8rem;
+            font-size: 0.98rem;
+            color: #34404e;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card .inset-quote {
+            padding: 0.6rem 0 0.6rem 1.2rem;
+            border-left: 2px solid #b9c4cf;
+            margin: 0.8rem 0 0.2rem;
+            font-style: italic;
+            color: #465663;
+            font-size: 0.92rem;
+        }
+
+        .emph-link {
+            color: #1f3a57;
+            text-decoration: none;
+            border-bottom: 1px dotted #7b8b9b;
+            padding-bottom: 0.05rem;
+            transition: border-color 0.15s;
+        }
+
+        .emph-link:hover {
+            border-bottom: 1px solid #1f3a57;
+        }
+
+        /* FAQ 摘要 — 极简折叠感 */
+        .faq-mini {
+            background: #f5f6f8;
+            border: 1px solid #d3d9df;
+            padding: 1.6rem 2rem 1.2rem;
+            margin-bottom: 2.8rem;
+            border-radius: 1px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+        }
+
+        .faq-mini h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #293845;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+        }
+
+        .faq-mini .q-item {
+            display: flex;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #d0d6dd;
+        }
+
+        .faq-mini .q-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-mini .q {
+            min-width: 4.8rem;
+            font-weight: 500;
+            color: #3f5062;
+        }
+
+        .faq-mini .a {
+            color: #3f5062;
+        }
+
+        /* 页尾访问提示 */
+        .footer-note {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            border-top: 1px solid #d6dce2;
+            margin-top: 1.2rem;
+        }
+
+        .footer-note p {
+            font-size: 0.92rem;
+            color: #4a5a6a;
+            max-width: 500px;
+            margin: 0 auto 0.5rem;
+        }
+
+        .footer-note .prompt {
+            display: inline-block;
+            background: #e4e9ef;
+            padding: 0.3rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            letter-spacing: 0.8px;
+            color: #2c3d4e;
+            border: 1px solid #cdd3db;
+        }
+
+        .responsive-rule {
+            display: block;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #bcc5ce, transparent);
+            margin: 0.8rem 0 1.6rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+
+            .hero {
+                padding: 2rem 1.2rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                letter-spacing: 3px;
+            }
+
+            .card {
+                padding: 1.2rem 1rem;
+            }
+
+            .faq-mini {
+                padding: 1rem 1rem 0.8rem;
+            }
+
+            .faq-mini .q-item {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+
+            .faq-mini .q {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 首页横幅 -->
+    <div class="hero">
+        <h1>爱游戏</h1>
+        <p>杂志专题 · 游戏文化的观察与再访</p>
+    </div>
+
+    <!-- 背景说明：从再次访问切入 -->
+    <div class="context-note">
+        <span>导言</span> 每次重新打开一个熟悉的游戏网站，都像翻开一本有折角的杂志——内容有新增，但气质连贯。本文从持续关注的角度，聊聊「爱游戏」作为一个信息节点的沉淀与变化。
+    </div>
+
+    <!-- 三段自然介绍：承接、收藏、持续关注 -->
+    <div class="feature-grid">
+        <!-- 段落一：再次访问的意义 -->
+        <div class="card">
+            <h2>再访：熟悉中的新意</h2>
+            <p>对常客而言，一个游戏主题站点的价值往往不在于首页有多华丽，而在于它是否值得反复回来。从内容编排到社区氛围，长期运营的网站会逐渐形成自身的知识谱系。<a href="https://zhhome-i-game.com.cn" class="emph-link">爱游戏</a>在素材整合与专题策划上持续更新，每一次回访都有可能发现之前忽略的细节——比如某篇评测的补记，或是新上线的互动栏目。</p>
+            <div class="inset-quote">“第二次点开同一个专题，常常能看到重编后的内容逻辑，这是数字刊物才有的迭代能力。”</div>
+        </div>
+
+        <!-- 段落二：收藏与积累 -->
+        <div class="card">
+            <h2>收藏即记录</h2>
+            <p>许多玩家习惯把优质的攻略、解析或文化随笔收藏起来，作为个人资料库的一部分。收藏行为本身就带有筛选和认同。长期关注「爱游戏」的用户，往往会从散落的单篇文章中拼出一张属于自己的阅读地图。专题式网站的魅力，恰恰在于它允许用户按自己的节奏消化内容，而不是被推送算法推着走。</p>
+            <p>把页面加入书签，等于在数字世界里标记一个值得反复探访的坐标。</p>
+        </div>
+
+        <!-- 段落三：持续关注的线索 -->
+        <div class="card">
+            <h2>持续的线索与语境</h2>
+            <p>一个游戏主题网站若能持续运营，意味着它背后有稳定的内容生产逻辑，也意味着关注者能够获得连贯的语境——而非零散的热点。从专题策划到玩家讨论，从新作前瞻到经典回顾，「爱游戏」在内容线上保持了一种适度的节奏感：不喧哗，但保有存在感。</p>
+            <p>这种持续的关注就像阅读一本慢慢扩充的杂志合订本：每一期的变化都不剧烈，但翻到最新一页时，总能感到某种熟悉的延展。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要（非完整问答，只有两条代表性） -->
+    <div class="faq-mini">
+        <h3>常见关注点摘要</h3>
+        <div class="q-item">
+            <span class="q">Q：内容侧重？</span>
+            <span class="a">以游戏文化、设计解析、专题回顾为主，兼顾实用攻略与社区互动。</span>
+        </div>
+        <div class="q-item">
+            <span class="q">Q：更新频率？</span>
+            <span class="a">不定期但保持节奏，专题策划通常提前数月准备，确保每期有足够深度。</span>
+        </div>
+        <div class="responsive-rule"></div>
+        <p style="font-size:0.88rem; color:#4d5e6e;">更多信息可浏览站内索引与栏目归档。</p>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+        <p>如果你对这个杂志式的专题空间感兴趣，不妨将 <a href="https://zhhome-i-game.com.cn" class="emph-link">爱游戏</a> 加入书签栏，在未来的某个时刻再次点开它。</p>
+        <span class="prompt">✦ 保持关注 · 随时回来 ✦</span>
+    </div>
+
+    <!-- 极简版权/种子签名（不显示种子，仅做结构完整） -->
+    <div style="margin-top: 2rem; font-size:0.7rem; color:#8d9aa8; text-align:center; letter-spacing:1px; border-top:1px solid #e1e6ec; padding-top:1rem;">
+        ◆ 杂志式专题 · 2025
+    </div>
+</div>
+</body>
+</html>
